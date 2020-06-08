@@ -1,16 +1,16 @@
 import React from 'react';
 
 
-function Card() {
+function Card(props) {
     return (
         <div className="card">
             <div class="card-image">
-                <img src="https://via.placeholder.com/250" />
+                <img src={props.imagem} />
             </div>
             <ul className="card-content">
-                <li>Nome: Sasha</li>
-                <li>Idade: 7 anos</li>
-                <li>Genero: Femenino</li>
+                <li>Nome: {props.nome}</li>
+                <li>Idade: {props.idade}</li>
+                <li>Genero: {props.genero}</li>
             </ul>
         </div>
     )
