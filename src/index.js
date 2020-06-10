@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 // import HelloWord from './components/HelloWord';
+import Input from './components/Input';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Input />
   </React.StrictMode>,
   document.getElementById('root')
 );
