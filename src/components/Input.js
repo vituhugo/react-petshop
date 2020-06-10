@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 
 function Input() {
-    /**
-     * Variavel frase, armazena a frase a ser exibida.
-     */
-    let [frase, setFrase] = useState("");
-    /**
-     * Variavel input, armazena o valor atual do input.
-     */
+    let [cartoes, setCartoes] = useState(["Primeira tarefa!"]);
+    
     let [input, setInput] = useState("");
+
+    console.log("CARTOES: ", cartoes);
+
+    function handleRemover(cartao_atual) {
+        // Lógica com filter
+        let novo_cartoes = cartoes.filter(c => c != cartao_atual);
+        setCartoes(novo_cartoes);
+
+        // // Lógica com splice
+        // cartoes.splice(cartoes.indexOf(cartao_atual), 1);
+        // setCartoes(cartoes);
+    }
 
     return (
         <div>
@@ -17,17 +24,18 @@ function Input() {
                 <input onChange={ e => setInput(e.target.value)} value={input} />
             </p>
             {/* Envia o valor armazenado na variavel input para a variável frase */}
-            <button onClick={ e => setFrase(input)}>
-                Capturar texto!
-            </button>
-            <button onClick={ e => setInput("")}>
-                Limpa input
+            <button onClick={ e => setCartoes([...cartoes, input])}>
+                Adicionar
             </button>
 
-            <p>
-                {/* Exibe o valor da variável frase */}
-                O Texto digitado foi: { input }
-            </p>
+            <div className="lista-cards">
+                {cartoes.map(cartao => (
+                    <p>
+                        {cartao}
+                        <button onClick={e => handleRemover(cartao)} >Remover</button>
+                    </p>
+                ))}
+            </div>
         </div>
     )
 }
